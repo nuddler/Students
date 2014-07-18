@@ -3,6 +3,10 @@ package amg.net.pl.Model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 
 public class Student {
 	
@@ -39,9 +43,15 @@ public class Student {
 	
 	@Override
 	public String toString() {
-		return "Student [vorName=" + vorName + ", lastname="
-				+ lastname + ", pesel=" + pesel + ", homeAdress=" + homeAdress
-				+ ", division=" + divisions + "]";
+		return ToStringBuilder.reflectionToString(this);
+	}
+	@Override
+	public int hashCode() {
+		return HashCodeBuilder.reflectionHashCode(this);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		return EqualsBuilder.reflectionEquals(obj, this);
 	}
 	public Student(String vorName, String lastname, String pesel,
 			Adress homeAdress, Division division) {
