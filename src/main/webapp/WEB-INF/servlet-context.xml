@@ -7,13 +7,12 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="amg.net.pl.servlets" />
+	<context:component-scan base-package="amg.net.pl.controler" />
 	<context:annotation-config />
 
 
-	<bean id="handlerMapping"
-		class="org.springframework.web.servlet.mvc.method.annotation.DefaultAnnotationHandlerMapping">
-	</bean>
+	<bean id="handlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.DefaultAnnotationHandlerMapping"/>
+	
 	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
