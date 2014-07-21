@@ -1,4 +1,4 @@
-package amg.net.pl.Model;
+package amg.net.pl.model;
 
 import java.util.ArrayList;
 import java.util.Collection;

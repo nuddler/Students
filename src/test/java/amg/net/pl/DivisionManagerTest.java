@@ -7,8 +7,8 @@ import org.apache.logging.log4j.Logger;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import amg.net.pl.Model.DivisionManager;
-import amg.net.pl.Model.IDivisionManager;
+import amg.net.pl.model.DivisionManager;
+import amg.net.pl.model.IDivisionManager;
 
 public class DivisionManagerTest {
 	private static final Logger logger = LogManager

@@ -1,4 +1,4 @@
-package amg.net.pl.Model;
+package amg.net.pl.model;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

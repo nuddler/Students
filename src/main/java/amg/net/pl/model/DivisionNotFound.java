@@ -1,4 +1,4 @@
-package amg.net.pl.Model;
+package amg.net.pl.model;
 
 public class DivisionNotFound extends RuntimeException {
 	public DivisionNotFound(String msg) {

@@ -7,13 +7,13 @@ import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 
-import amg.net.pl.Model.Adress;
-import amg.net.pl.Model.Division;
-import amg.net.pl.Model.DivisionManager;
-import amg.net.pl.Model.IDivisionManager;
-import amg.net.pl.Model.IStudentManager;
-import amg.net.pl.Model.Student;
-import amg.net.pl.Model.StudentManager;
+import amg.net.pl.model.Adress;
+import amg.net.pl.model.Division;
+import amg.net.pl.model.DivisionManager;
+import amg.net.pl.model.IDivisionManager;
+import amg.net.pl.model.IStudentManager;
+import amg.net.pl.model.Student;
+import amg.net.pl.model.StudentManager;
 
 public class StudentManagerTest {
 
