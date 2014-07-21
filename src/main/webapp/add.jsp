@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form action="AddingServlet" method="GET">
+<form action="addstudent" method="POST">
 <h5>Personal Info</h5>
 First Name: <input type="text" name="vorName">
 <br />
@@ -21,13 +21,13 @@ Flat number: <input type="text" name="flatNumber" />
 <input type="submit" value="Submit" />
 </form>
 
-<%
+<%-- <%
 request.setAttribute("vorname", request.getParameter("vorname"));
 request.setAttribute("lastName", request.getParameter("lastName"));
 request.setAttribute("pesel", request.getParameter("pesel"));
 request.setAttribute("posesionNumber", request.getParameter("posesionNumber"));
 request.setAttribute("flatNumber", request.getParameter("flatNumber"));
 request.setAttribute("divisionName", request.getParameter("divisionName"));
-%>
+%> --%>
 </body>
 </html>
