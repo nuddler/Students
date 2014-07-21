@@ -2,7 +2,6 @@ package amg.net.pl.model;
 
 import java.util.Map;
 
-
 public interface IStudentManager {
 	
 	public void deleteStudent(String pesel);

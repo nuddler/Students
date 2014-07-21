@@ -4,30 +4,32 @@
 
 <web-app>
 	<display-name>Archetype Created Web Application</display-name>
+
+		<context-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/appcontext.xml </param-value>
+		</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
 	<servlet>
-		<servlet-name>HelloWorldServlet</servlet-name>
-		<display-name>HelloWorldServlet</display-name>
-		<description></description>
-		<servlet-class>servlets.HelloWorldServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>StudentServlet</servlet-name>
-		<display-name>StudentServlet</display-name>
-		<description></description>
-		<servlet-class>servlets.StudentServlet</servlet-class>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+            <param-name>contextConfigLocation</param-name> 
+            <param-value>/WEB-INF/servlet-context.xml</param-value>
+        </init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>HelloWorldServlet</servlet-name>
-		<url-pattern>/HelloWorldServlet</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>StudentServlet</servlet-name>
-		<url-pattern>/StudentServlet</url-pattern>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.spring</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
-	<welcome-file>index.jsp</welcome-file>
-	<welcome-file>studentlist.jsp</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>

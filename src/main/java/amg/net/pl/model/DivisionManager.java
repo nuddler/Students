@@ -4,15 +4,23 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
+@Component
 public final class DivisionManager implements IDivisionManager {
 
-	private static IDivisionManager instance;
 	private static final Logger logger = LogManager
 			.getLogger(DivisionManager.class);
-	private DivisionManager(){
+	
+	public DivisionManager(){
+	}
+	
+	@PostConstruct
+	private void init() {
 		divisions=new HashMap<String, Division>();
 		Division tmpDivision=new Division("FTIMS");
 		divisions.put("FTIMS", tmpDivision);
@@ -33,11 +41,5 @@ public final class DivisionManager implements IDivisionManager {
 		}
 		
 		return divisions.get(id);
-	}
-	public static IDivisionManager getInstance(){
-		if(instance==null){
-    		instance=new DivisionManager();
-    	}
-    	return instance;
 	}
 }

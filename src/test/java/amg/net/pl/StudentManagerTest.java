@@ -1,11 +1,16 @@
 package amg.net.pl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import amg.net.pl.model.Adress;
 import amg.net.pl.model.Division;
@@ -15,18 +20,20 @@ import amg.net.pl.model.IStudentManager;
 import amg.net.pl.model.Student;
 import amg.net.pl.model.StudentManager;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "/META-INF/test-context.xml" })
 public class StudentManagerTest {
 
 	private static final Logger logger = LogManager
 			.getLogger(StudentManagerTest.class);
+	
+	@Autowired
 	public IStudentManager studentManager;
+	@Autowired
 	public IDivisionManager divisionManager;
 
 	@Before
 	public void before() {
-		studentManager = StudentManager.getInstance();
-		divisionManager = DivisionManager.getInstance();
-		
 		Adress tmpAdress = new Adress("ULICA ", "NUMER_DOMU", "NUMER_MIESZKANIA");
 		Division tmpDivision = divisionManager.getById("FTIMS");
 		studentManager.create(tmpDivision, tmpAdress, "Imie1", "Nazwisko1","000");

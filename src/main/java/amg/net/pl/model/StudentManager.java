@@ -5,14 +5,15 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
+@Component
 public class StudentManager implements IStudentManager {
 
-	private static IStudentManager instance;
 	private static final Logger logger = LogManager
 			.getLogger(StudentManager.class);
 
-	private StudentManager() {
+	public StudentManager() {
 		students = new HashMap<String, Student>();
 	}
 
@@ -49,14 +50,6 @@ public class StudentManager implements IStudentManager {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Student created and inserted into base");
 		}
-	}
-
-	public static IStudentManager getInstance() {
-		
-		if (instance == null) {
-			instance = new StudentManager();
-		}
-		return instance;
 	}
 
 	public Map<String,Student> getAll() {

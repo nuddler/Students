@@ -1,7 +1,7 @@
 <html>
 <body>
 
-<form action="StudentServlet" method="GET">
+<form action="AddingServlet" method="GET">
 <h5>Personal Info</h5>
 First Name: <input type="text" name="vorName">
 <br />

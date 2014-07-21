@@ -7,8 +7,10 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<context:component-scan base-package="amg.net.pl.model"/>
-	<context:annotation-config/>
+	<context:component-scan base-package="amg.net.pl.model" />
+	<context:annotation-config />
 
+	<bean name="studentManager" class="amg.net.pl.model.StudentManager"/>
+	<bean name="divisionManager" class="amg.net.pl.model.DivisionManager"/>
 	
 </beans>
