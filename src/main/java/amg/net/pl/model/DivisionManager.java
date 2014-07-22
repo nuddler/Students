@@ -1,6 +1,5 @@
 package amg.net.pl.model;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,8 +29,8 @@ public final class DivisionManager implements IDivisionManager {
 	
 	private Map<String,Division> divisions;
 	
-	public Collection<Division> getAll() {
-		return null;
+	public Map<String,Division> getAll() {
+		return divisions;
 	}
 
 	public Division getById(String id)  {

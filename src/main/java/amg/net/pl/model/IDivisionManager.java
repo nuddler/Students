@@ -1,10 +1,10 @@
 package amg.net.pl.model;
 
-import java.util.Collection;
+import java.util.Map;
 
 public interface IDivisionManager {
 	
-	public Collection<Division> getAll();
+	public Map<String, Division> getAll();
 	public Division getById(String id);
 	
 }

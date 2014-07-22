@@ -1,11 +1,6 @@
 package amg.net.pl.controler;
 
-import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,14 +21,19 @@ public class StudentControler {
 	@Autowired
 	private IStudentManager studentManager;
 	
-	@RequestMapping(value="/hello", method=RequestMethod.GET)
-	public String helloWorld(Model model) {
-		model.addAttribute("message", "Hello World!");
-		return "helloWorld";	
+	@RequestMapping(value="/homePage", method=RequestMethod.GET)
+	public String homePage(Model model) {
+		return "index";	
 	}
 	
-	@RequestMapping(value="/addstudent", method=RequestMethod.POST)
-	public String addStudent(HttpServletRequest request,
+	@RequestMapping("/addStudent")
+	public String addStudent(Model model){
+		model.addAttribute("divisions", divisionManager.getAll());
+		return "add";
+	}
+	
+	@RequestMapping(value="/createstudent", method=RequestMethod.POST)
+	public String createStudent(HttpServletRequest request,
 			Model model){
 
 		Division division=divisionManager.getById(request.getParameter("divisionName"));

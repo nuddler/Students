@@ -37,7 +37,7 @@ public class Student {
 	public void setHomeAdress(Adress homeAdress) {
 		this.homeAdress = homeAdress;
 	}
-	public Collection<Division> getDivision() {
+	public Collection<Division> getDivisions() {
 		return divisions;
 	}
 	
