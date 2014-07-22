@@ -8,24 +8,35 @@
 <body>
 	<h1>Edit student with PESEL:"${pesel}"</h1>
 	<form action="editStudent" method="POST">
-		<h2>Personal Info</h2>
-		First Name: <input type="text" name="vorName"
-			value="${student.vorName}" /> <br /> Last Name: <input type="text"
-			name="lastName" value="${student.lastname}" /> <br>
-		<h2>Adress</h2>
-		Street: <input type="text" name="street"
-			value="${student.homeAdress.street}" /> <br /> Possesion number: <input
-			type="text" name="posesionNumber"
-			value="${student.homeAdress.posesionNumber}" /> <br> Flat
-		number: <input type="text" name="flatNumber"
-			value="${student.homeAdress.flatNumber}" /> <br>
-		<h2>Division :</h2>
-		<c:forEach items="${divisions}" var="division">
-			<c:out value="${division.value.name}"></c:out>
-		</c:forEach>
-		</br> <input type="text" name="divisionName"
-			value="${student.divisions[0].name}" /> <br /> <input type="submit"
-			value="Edit" /> <input type="hidden" name="pesel" value="${pesel}" />
+		<div>
+			<h2>Personal Info</h2>
+			First Name: <input type="text" name="vorName"
+				value="${student.vorName}" /> <br /> Last Name: <input type="text"
+				name="lastName" value="${student.lastname}" />
+		</div>
+		<br>
+		<div>
+			<h2>Adress</h2>
+			Street: <input type="text" name="street"
+				value="${student.homeAdress.street}" /> <br /> Possesion number: <input
+				type="text" name="posesionNumber"
+				value="${student.homeAdress.posesionNumber}" /> <br> Flat
+			number: <input type="text" name="flatNumber"
+				value="${student.homeAdress.flatNumber}" />
+		</div>
+		<br>
+		<div>
+			<h2>Division :</h2>
+			<input list="divisions" name="divisionName"
+				value="${student.divisions[0].name}">
+			<datalist id="divisions">
+				<c:forEach items="${divisions}" var="division">
+					<option value="${division.value.name}">
+				</c:forEach>
+			</datalist>
+		</div>
+		<br /> <input type="submit" value="Edit" /> <input type="hidden"
+			name="pesel" value="${pesel}" />
 	</form>
 
 </body>

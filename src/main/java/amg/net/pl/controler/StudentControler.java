@@ -18,69 +18,82 @@ import amg.net.pl.model.IStudentManager;
 @Controller
 public class StudentControler {
 
-    private static final Logger logger = LogManager
+	private static final Logger logger = LogManager
 			.getLogger(StudentControler.class);
-    
+
 	@Autowired
 	private IDivisionManager divisionManager;
 	@Autowired
 	private IStudentManager studentManager;
-	
-	@RequestMapping(value="/editStudent", method=RequestMethod.POST)
-	public String editStudent(HttpServletRequest request,Model model){
-		
-		String pesel=request.getParameter("pesel");
+
+	@RequestMapping(value = "/editStudent", method = RequestMethod.POST)
+	public String editStudent(HttpServletRequest request, Model model) {
+
+		String pesel = request.getParameter("pesel");
 		if (logger.isDebugEnabled()) {
-			logger.debug("PESEL:"+pesel);
+			logger.debug("PESEL:" + pesel);
 		}
-		Division division=divisionManager.getById(request.getParameter("divisionName"));
-		Adress adress=new Adress(request.getParameter("street"), request.getParameter("posesionNumber"), request.getParameter("flatNumber"));
-		String vorname=request.getParameter("vorName");
-		String lastName=request.getParameter("lastName");
-		
+		Division division = divisionManager.getById(request
+				.getParameter("divisionName"));
+		Adress adress = new Adress(request.getParameter("street"),
+				request.getParameter("posesionNumber"),
+				request.getParameter("flatNumber"));
+		String vorname = request.getParameter("vorName");
+		String lastName = request.getParameter("lastName");
+
 		studentManager.editStudent(pesel, division, adress, vorname, lastName);
 		return "index";
 	}
-	
-	@RequestMapping(value="/homePage", method=RequestMethod.GET)
+
+	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
 	public String homePage(Model model) {
-		return "index";	
+		return "index";
 	}
-	
-	@RequestMapping(value="/editjsp", method=RequestMethod.GET)
-	public String editJsp(HttpServletRequest request,Model model) {
-		
-		String pesel=request.getParameter("pesel");
-		model.addAttribute("student",studentManager.getByPesel(pesel));
-		model.addAttribute("pesel",pesel);
-		return "edit";	
+
+	@RequestMapping(value = "/editjsp", method = RequestMethod.POST)
+	public String editJsp(HttpServletRequest request, Model model) {
+
+		String pesel = request.getParameter("pesel");
+		model.addAttribute("student", studentManager.getByPesel(pesel));
+		model.addAttribute("pesel", pesel);
+		model.addAttribute("divisions",divisionManager.getAll());
+		return "edit";
 	}
-	
+
 	@RequestMapping("/addStudent")
-	public String addStudent(Model model){
+	public String addStudent(Model model) {
 		model.addAttribute("divisions", divisionManager.getAll());
 		return "add";
 	}
-	
-	@RequestMapping(value="/createstudent", method=RequestMethod.POST)
-	public String createStudent(HttpServletRequest request,
-			Model model){
 
-		Division division=divisionManager.getById(request.getParameter("divisionName"));
-		Adress adress=new Adress(request.getParameter("street"), request.getParameter("posesionNumber"), request.getParameter("flatNumber"));
-		String vorname=request.getParameter("vorName");
-		String lastName=request.getParameter("lastName");
-		String pesel=request.getParameter("pesel");
-		
+	@RequestMapping(value = "/createstudent", method = RequestMethod.POST)
+	public String createStudent(HttpServletRequest request, Model model) {
+
+		Division division = divisionManager.getById(request
+				.getParameter("divisionName"));
+		Adress adress = new Adress(request.getParameter("street"),
+				request.getParameter("posesionNumber"),
+				request.getParameter("flatNumber"));
+		String vorname = request.getParameter("vorName");
+		String lastName = request.getParameter("lastName");
+		String pesel = request.getParameter("pesel");
+
 		studentManager.create(division, adress, vorname, lastName, pesel);
-		
+
 		return "index";
 	}
-	
-	@RequestMapping(value="/listStudents", method=RequestMethod.GET)
-	public String listStudents(Model model)  {
 
-		model.addAttribute("map",studentManager.getAll());
+	@RequestMapping("/deleteStudent")
+	public String deleteStudent(HttpServletRequest request,Model model) {
+		String pesel = request.getParameter("pesel");
+		studentManager.deleteStudent(pesel);
+		return "index";
+	}
+
+	@RequestMapping(value = "/listStudents", method = RequestMethod.GET)
+	public String listStudents(Model model) {
+
+		model.addAttribute("map", studentManager.getAll());
 		return "studentlist";
 	}
 }
