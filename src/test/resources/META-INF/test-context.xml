@@ -9,6 +9,4 @@
 
 	<context:component-scan base-package="amg.net.pl.model"/>
 	<context:annotation-config/>
-
-	
 </beans>

@@ -8,4 +8,5 @@ public interface IStudentManager {
 	public Student getByPesel(String pesel);
 	public void create(Division division,Adress adress, String vorname, String lastName,String pesel);
 	public Map<String, Student> getAll();
+	public void editStudent(String pesel,Division division,Adress adress, String vorname, String lastName);
 }

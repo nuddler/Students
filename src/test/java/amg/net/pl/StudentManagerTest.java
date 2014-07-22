@@ -14,11 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import amg.net.pl.model.Adress;
 import amg.net.pl.model.Division;
-import amg.net.pl.model.DivisionManager;
 import amg.net.pl.model.IDivisionManager;
 import amg.net.pl.model.IStudentManager;
 import amg.net.pl.model.Student;
-import amg.net.pl.model.StudentManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/test-context.xml" })

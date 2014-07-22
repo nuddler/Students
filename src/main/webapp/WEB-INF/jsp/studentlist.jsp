@@ -1,4 +1,4 @@
-<%@ page isELIgnored="false" %>
+<%@ page isELIgnored="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -10,12 +10,17 @@
 <title>List of students</title>
 </head>
 <body>
-<amg:studentheader/><br>
-<c:forEach items="${map}" var="elem">
-<amg:student student="${elem.value}"></amg:student>
-</c:forEach>
-<form action="homePage">
-<input type="submit" value="Back to home" />
-</form>
+	<amg:studentheader />
+	<br>
+	<c:forEach items="${map}" var="elem">
+		<amg:student student="${elem.value}"/>	
+		<form action="editjsp">
+			<input type="submit" value="Edit" /> 
+			<input type="hidden"name="pesel" value="${elem.value.pesel}"/>
+		</form>
+	</c:forEach>
+	<form action="homePage">
+		<input type="submit" value="Back to home" />
+	</form>
 </body>
 </html>
