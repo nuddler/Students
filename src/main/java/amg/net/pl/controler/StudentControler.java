@@ -1,12 +1,15 @@
 package amg.net.pl.controler;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,36 +17,17 @@ import amg.net.pl.model.Adress;
 import amg.net.pl.model.Division;
 import amg.net.pl.model.IDivisionManager;
 import amg.net.pl.model.IStudentManager;
+import amg.net.pl.model.Student;
 
 @Controller
 public class StudentControler {
 
-	private static final Logger logger = LogManager
-			.getLogger(StudentControler.class);
+	private static final Logger logger = LogManager.getLogger(StudentControler.class);
 
 	@Autowired
 	private IDivisionManager divisionManager;
 	@Autowired
 	private IStudentManager studentManager;
-
-	@RequestMapping(value = "/editStudent", method = RequestMethod.POST)
-	public String editStudent(HttpServletRequest request, Model model) {
-
-		String pesel = request.getParameter("pesel");
-		if (logger.isDebugEnabled()) {
-			logger.debug("PESEL:" + pesel);
-		}
-		Division division = divisionManager.getById(request
-				.getParameter("divisionName"));
-		Adress adress = new Adress(request.getParameter("street"),
-				request.getParameter("posesionNumber"),
-				request.getParameter("flatNumber"));
-		String vorname = request.getParameter("vorName");
-		String lastName = request.getParameter("lastName");
-
-		studentManager.editStudent(pesel, division, adress, vorname, lastName);
-		return "index";
-	}
 
 	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
 	public String homePage(Model model) {
@@ -60,23 +44,57 @@ public class StudentControler {
 		return "edit";
 	}
 
+	@RequestMapping(value = "/editStudent", method = RequestMethod.POST)
+	public String editStudent(@ModelAttribute("student") Student student) {
+
+		String pesel = student.getPesel();
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug("Edit controller started (PESEL:"+pesel+")");
+		}
+		
+		String divisionName = student.getDivision().getName();
+		Division division = new Division(divisionName);
+
+		Adress adress = new Adress(student.getHomeAdress().getStreet(), student
+				.getHomeAdress().getPosesionNumber(), student.getHomeAdress()
+				.getFlatNumber());
+
+		String vorname = student.getVorName();
+		String lastName = student.getLastname();
+		
+		studentManager.editStudent(pesel, division, adress, vorname, lastName);
+		return "index";
+	}
+	
 	@RequestMapping("/addStudent")
 	public String addStudent(Model model) {
-		model.addAttribute("divisions", divisionManager.getAll());
+		model.addAttribute("divisions", divisionManager.getAll().values());
+		model.addAttribute("newStudent",new Student());
 		return "add";
 	}
-
+	//JSP
 	@RequestMapping(value = "/createstudent", method = RequestMethod.POST)
-	public String createStudent(HttpServletRequest request, Model model) {
+	public String createStudent(@Valid Student student, BindingResult result,Model model) {
+		
+		if(result.hasErrors()){
+			if (logger.isDebugEnabled()) {
+				logger.debug("ERORR");
+			}
+			
+			return addStudent(model);
+		}
+		String divisionName = student.getDivision().getName();
+		Division division = new Division(divisionName);
+		
+		Adress adress = new Adress(student.getHomeAdress().getStreet(),
+				student.getHomeAdress().getPosesionNumber(),
+				student.getHomeAdress().getFlatNumber());
 
-		Division division = divisionManager.getById(request
-				.getParameter("divisionName"));
-		Adress adress = new Adress(request.getParameter("street"),
-				request.getParameter("posesionNumber"),
-				request.getParameter("flatNumber"));
-		String vorname = request.getParameter("vorName");
-		String lastName = request.getParameter("lastName");
-		String pesel = request.getParameter("pesel");
+		
+		String vorname = student.getVorName();
+		String lastName = student.getLastname();
+		String pesel = student.getPesel();
 
 		studentManager.create(division, adress, vorname, lastName, pesel);
 

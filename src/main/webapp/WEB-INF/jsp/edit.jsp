@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
 <html>
 <head>
@@ -7,37 +8,36 @@
 </head>
 <body>
 	<h1>Edit student with PESEL:"${pesel}"</h1>
-	<form action="editStudent" method="POST">
+	
+	<form:form modelAttribute="student" method="POST"
+		action="editStudent">
 		<div>
 			<h2>Personal Info</h2>
-			First Name: <input type="text" name="vorName"
-				value="${student.vorName}" /> <br /> Last Name: <input type="text"
-				name="lastName" value="${student.lastname}" />
+			<p>First Name</p>
+			<form:input path="vorName" />
+			<p>Last Name</p>
+			<form:input path="lastname" />
 		</div>
-		<br>
 		<div>
 			<h2>Adress</h2>
-			Street: <input type="text" name="street"
-				value="${student.homeAdress.street}" /> <br /> Possesion number: <input
-				type="text" name="posesionNumber"
-				value="${student.homeAdress.posesionNumber}" /> <br> Flat
-			number: <input type="text" name="flatNumber"
-				value="${student.homeAdress.flatNumber}" />
+			<p>Street</p>
+			<form:input path="homeAdress.street" />
+			<p>Possesion number</p>
+			<form:input path="homeAdress.posesionNumber"  />
+			<p>Flat number</p>
+			<form:input path="homeAdress.flatNumber" />
 		</div>
-		<br>
 		<div>
-			<h2>Division :</h2>
-			<input list="divisions" name="divisionName"
-				value="${student.divisions[0].name}">
-			<datalist id="divisions">
+			<h2>Divisions</h2>
+			<form:select path="division.name" >
 				<c:forEach items="${divisions}" var="division">
-					<option value="${division.value.name}">
+					<form:option value="${division.value.name}" />
 				</c:forEach>
-			</datalist>
+			</form:select>
 		</div>
-		<br /> <input type="submit" value="Edit" /> <input type="hidden"
-			name="pesel" value="${pesel}" />
-	</form>
+		<form:hidden path="pesel" value="${pesel}"/>
+		<form:button type="submit">Add</form:button>
+	</form:form>
 
 </body>
 </html>

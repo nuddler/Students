@@ -1,6 +1,5 @@
 package amg.net.pl.model;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,10 +59,12 @@ public class StudentManager implements IStudentManager {
 
 	public void editStudent(String pesel, Division division, Adress adress,
 			String vorname, String lastName) {
-		
+		if (logger.isDebugEnabled()) {
+			logger.debug("Starting edit student with pesel:"+pesel);
+		}
 		students.get(pesel).setVorName(vorname);
 		students.get(pesel).setLastname(lastName);
 		students.get(pesel).setHomeAdress(adress);
-		((ArrayList)students.get(pesel).getDivisions()).add(0, division);
+		students.get(pesel).setDivision(division);
 	}
 }

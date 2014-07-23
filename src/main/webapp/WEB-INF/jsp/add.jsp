@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isELIgnored="false"%>
 <html>
 <head>
@@ -6,34 +7,36 @@
 <title>Add new student</title>
 </head>
 <body>
-
-	<form action="createstudent" method="POST">
+	<form:form modelAttribute="newStudent" method="POST"
+		action="createstudent">
 		<div>
 			<h2>Personal Info</h2>
-			First Name: <input type="text" name="vorName" value="dupa" /> <br />
-			Last Name: <input type="text" name="lastName" value="dupa" /> <br>
-			PESEL: <input type="text" name="pesel" value="dupa" />
+			<p>First Name</p>
+			<form:input path="vorName" value="Imie" />
+			<p>Last Name</p>
+			<form:input path="lastname" value="Nazwisko" />
+			<p>PESEL</p>
+			<form:input path="pesel" value="12345678910" />
 		</div>
-		<br />
 		<div>
 			<h2>Adress</h2>
-			Street: <input type="text" name="street" value="dupa" /> <br />
-			Possesion number: <input type="text" name="posesionNumber"
-				value="dupa" /> <br> Flat number: <input type="text"
-				name="flatNumber" value="dupa" />
+			<p>Street</p>
+			<form:input path="homeAdress.street" value="ulica" />
+			<p>Possesion number</p>
+			<form:input path="homeAdress.posesionNumber" value="Nr domu" />
+			<p>Flat number</p>
+			<form:input path="homeAdress.flatNumber" value="Nr miszkania" />
 		</div>
-		<br>
 		<div>
-			<h2>Division :</h2>
-			<input list="divisions" name="divisionName">
-			<datalist id="divisions">
+			<h2>Divisions</h2>
+			<form:select path="division.name">
 				<c:forEach items="${divisions}" var="division">
-					<option value="${division.value.name}">
+					<form:option value="${division.name}" />
 				</c:forEach>
-			</datalist>
+			</form:select>
 		</div>
-		<input type="submit" value="Submit" />
-	</form>
-
+		<form:button type="submit">Add</form:button>
+	</form:form>
 </body>
 </html>
+

@@ -1,0 +1,14 @@
+<map>
+  <entry>
+    <string>OIZ</string>
+    <amg.net.pl.model.Division>
+      <name>OIZ</name>
+    </amg.net.pl.model.Division>
+  </entry>
+  <entry>
+    <string>FTIMS</string>
+    <amg.net.pl.model.Division>
+      <name>FTIMS</name>
+    </amg.net.pl.model.Division>
+  </entry>
+</map>

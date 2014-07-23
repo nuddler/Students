@@ -1,12 +1,16 @@
 package amg.net.pl.model;
 
+import javax.validation.constraints.NotNull;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class Division {
 	
+	@NotNull(message="Imię nie może być puste")
 	private String name;
 
 	public String getName() {
@@ -34,6 +38,9 @@ public class Division {
 	public Division(String name) {
 		super();
 		this.name = name;
+	}
+	public Division() {
+		// TODO Auto-generated constructor stub
 	}
 
 }

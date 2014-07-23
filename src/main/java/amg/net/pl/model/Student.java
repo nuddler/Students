@@ -1,27 +1,35 @@
 package amg.net.pl.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
-
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Student {
 	
+	@NotEmpty(message="Imię nie może być puste")
 	private String vorName;
+	
+	@NotNull(message="Imię nie może być puste")
 	private String lastname;
-	private final String pesel;
+	
+	@NotNull(message="Imię nie może być puste")
+	private String pesel;
+	
 	private Adress homeAdress;
-	private Collection<Division> divisions;
+	
+	private Division division;
 	
 	public String getVorName() {
 		return vorName;
 	}
+	
 	public void setVorName(String vorName) {
 		this.vorName = vorName;
 	}
+	
 	public String getLastname() {
 		return lastname;
 	}
@@ -31,14 +39,17 @@ public class Student {
 	public String getPesel() {
 		return pesel;
 	}
+	public void setPesel(String pesel) {
+		this.pesel=pesel;
+	}
 	public Adress getHomeAdress() {
 		return homeAdress;
 	}
 	public void setHomeAdress(Adress homeAdress) {
 		this.homeAdress = homeAdress;
 	}
-	public Collection<Division> getDivisions() {
-		return divisions;
+	public Division getDivision() {
+		return division;
 	}
 	
 	@Override
@@ -60,8 +71,13 @@ public class Student {
 		this.lastname = lastname;
 		this.pesel = pesel;
 		this.homeAdress = homeAdress;
-		divisions=new ArrayList<Division>(); 
-		this.divisions.add(division);
+		this.setDivision(division);
+	}
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
+	public void setDivision(Division division) {
+		this.division = division;
 	}
 
 }

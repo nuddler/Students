@@ -20,11 +20,15 @@ public final class DivisionManager implements IDivisionManager {
 	
 	@PostConstruct
 	private void init() {
-		divisions=new HashMap<String, Division>();
+		divisions=new HashMap<String, Division>();	
 		Division tmpDivision=new Division("FTIMS");
 		divisions.put("FTIMS", tmpDivision);
 		tmpDivision=new Division("OIZ");
 		divisions.put("OIZ", tmpDivision);
+		//Scanner xml=new Scanner("");
+//		XStream serializer=new XStream();
+//		divisions = (HashMap<String, Division>)serializer.fromXML(new File("Students/divisions.xml"));
+				
 	}
 	
 	private Map<String,Division> divisions;
@@ -34,11 +38,11 @@ public final class DivisionManager implements IDivisionManager {
 	}
 
 	public Division getById(String id)  {
+		
 		if(id==null || !divisions.containsKey(id)){	
 		logger.error("Wrong id");
 		throw new DivisionNotFound();
 		}
-		
 		return divisions.get(id);
 	}
 }

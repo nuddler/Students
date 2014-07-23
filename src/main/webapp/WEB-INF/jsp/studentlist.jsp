@@ -10,27 +10,25 @@
 <title>List of students</title>
 </head>
 <body>
-	<table border="1" style="width:300px">
-	<tr>
-	<amg:studentheader />
-	</tr>
-	<c:forEach items="${map}" var="elem">
-	<tr>
-		<amg:student student="${elem.value}"/>	
-		<td>
-		<form action="editjsp" method="POST">
-			<input type="submit" value="Edit" /> 
-			<input type="hidden"name="pesel" value="${elem.value.pesel}"/>
-		</form>
-		</td>
-		<td>
-		<form action="deleteStudent">
-			<input type="submit" value="Delete" /> 
-			<input type="hidden"name="pesel" value="${elem.value.pesel}"/>
-		</form>
-		</td>
-	</tr>
-	</c:forEach>
+	<table border="1" style="width: 300px">
+		<tr>
+			<amg:studentheader />
+		</tr>
+		<c:forEach items="${map}" var="elem">
+			<tr>
+				<amg:student student="${elem.value}" />
+				<td>
+					<form action="editjsp" method="POST">
+						<input type="submit" value="Edit" /> <input type="hidden"
+							name="pesel" value="${elem.value.pesel}" />
+					</form>
+					<form action="deleteStudent">
+						<input type="submit" value="Delete" /> <input type="hidden"
+							name="pesel" value="${elem.value.pesel}" />
+					</form>
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
 	<form action="homePage">
 		<input type="submit" value="Back to home" />
