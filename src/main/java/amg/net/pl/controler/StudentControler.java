@@ -67,21 +67,22 @@ public class StudentControler {
 		return "index";
 	}
 	
-	@RequestMapping("/addStudent")
+	@RequestMapping(value="/addStudent", method = RequestMethod.GET)
 	public String addStudent(Model model) {
 		model.addAttribute("divisions", divisionManager.getAll().values());
 		model.addAttribute("newStudent",new Student());
 		return "add";
 	}
 	//JSP
-	@RequestMapping(value = "/createstudent", method = RequestMethod.POST)
-	public String createStudent(@ModelAttribute("newstudent") @Valid Student newstudent, BindingResult result,Model model) {
+	@RequestMapping(value = "/addStudent", method = RequestMethod.POST)
+	public String createStudent(@ModelAttribute("newStudent") @Valid Student newstudent, BindingResult result,Model model) {
 		
 		if(result.hasErrors()){
 			if (logger.isDebugEnabled()) {
 				logger.debug("ERORR");
 			}
-			return addStudent(model);
+			model.addAttribute("divisions", divisionManager.getAll().values());
+			return "add";
 		}
 		String divisionName = newstudent.getDivision().getName();
 		Division division = new Division(divisionName);
