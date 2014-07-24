@@ -1,8 +1,6 @@
 Students
 ========
- TODO!
-ZADANKA Z TABLICY!
-*  Servlet ustawiający listę studentów jako atrybut na REQUESCIE
-* JSP z c:forEachem do prezentacji studentów w tabelce
-*  Servlet obsługujący dodawanie studentów
-*  JSP z formularzem do dodawania studentów 
+
+*  http://www.regexr.com/
+* http://www.mkyong.com/
+*  http://www.mkyong.com/spring-mvc/spring-3-mvc-and-jsr303-valid-example/
