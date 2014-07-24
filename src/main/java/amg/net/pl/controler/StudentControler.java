@@ -75,26 +75,25 @@ public class StudentControler {
 	}
 	//JSP
 	@RequestMapping(value = "/createstudent", method = RequestMethod.POST)
-	public String createStudent(@Valid Student student, BindingResult result,Model model) {
+	public String createStudent(@ModelAttribute("newstudent") @Valid Student newstudent, BindingResult result,Model model) {
 		
 		if(result.hasErrors()){
 			if (logger.isDebugEnabled()) {
 				logger.debug("ERORR");
 			}
-			
 			return addStudent(model);
 		}
-		String divisionName = student.getDivision().getName();
+		String divisionName = newstudent.getDivision().getName();
 		Division division = new Division(divisionName);
 		
-		Adress adress = new Adress(student.getHomeAdress().getStreet(),
-				student.getHomeAdress().getPosesionNumber(),
-				student.getHomeAdress().getFlatNumber());
+		Adress adress = new Adress(newstudent.getHomeAdress().getStreet(),
+				newstudent.getHomeAdress().getPosesionNumber(),
+				newstudent.getHomeAdress().getFlatNumber());
 
 		
-		String vorname = student.getVorName();
-		String lastName = student.getLastname();
-		String pesel = student.getPesel();
+		String vorname = newstudent.getVorName();
+		String lastName = newstudent.getLastname();
+		String pesel = newstudent.getPesel();
 
 		studentManager.create(division, adress, vorname, lastName, pesel);
 
@@ -105,7 +104,7 @@ public class StudentControler {
 	public String deleteStudent(HttpServletRequest request,Model model) {
 		String pesel = request.getParameter("pesel");
 		studentManager.deleteStudent(pesel);
-		return "index";
+		return "redirect:/";
 	}
 
 	@RequestMapping(value = "/listStudents", method = RequestMethod.GET)

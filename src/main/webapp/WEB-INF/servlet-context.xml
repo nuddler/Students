@@ -25,6 +25,11 @@
 			value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
-		
 	</bean>
+	
+	<bean class="org.springframework.context.support.ResourceBundleMessageSource" id="messageSource">
+	<property name="basename" value="messages"/>	
+	</bean>
+	
+	<mvc:resources location="/resources/" mapping="/resources/**"/>
 </beans>

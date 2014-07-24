@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Student {
 	
-	@NotEmpty(message="Imię nie może być puste")
+	@NotEmpty
 	private String vorName;
 	
 	@NotNull(message="Imię nie może być puste")

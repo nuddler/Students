@@ -9,10 +9,12 @@
 <body>
 	<form:form modelAttribute="newStudent" method="POST"
 		action="createstudent">
+		<form:errors path="*" element="div" />
 		<div>
 			<h2>Personal Info</h2>
 			<p>First Name</p>
 			<form:input path="vorName" value="Imie" />
+			<form:errors path="vorName">Nie dziala</form:errors>
 			<p>Last Name</p>
 			<form:input path="lastname" value="Nazwisko" />
 			<p>PESEL</p>
