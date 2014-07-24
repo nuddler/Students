@@ -20,6 +20,9 @@ public final class DivisionManager implements IDivisionManager {
 	
 	@PostConstruct
 	private void init() {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Start initialize "+this);
+		}
 		divisions=new HashMap<String, Division>();	
 		Division tmpDivision=new Division("FTIMS");
 		divisions.put("FTIMS", tmpDivision);

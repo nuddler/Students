@@ -1,16 +1,15 @@
 package amg.net.pl.model;
 
-import javax.validation.constraints.NotNull;
-
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Division {
 	
-	@NotNull(message="Imię nie może być puste")
+	@NotEmpty(message="Imię nie może być puste")
 	private String name;
 
 	public String getName() {

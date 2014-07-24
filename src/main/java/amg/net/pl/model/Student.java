@@ -1,6 +1,7 @@
 package amg.net.pl.model;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
@@ -10,16 +11,20 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Student {
 	
 	@NotEmpty
+	@Pattern(regexp = "[A-Za-z]{2,}",message="Podaj poprawne imie")
 	private String vorName;
 	
-	@NotNull(message="Imię nie może być puste")
+	@NotEmpty(message="Imię nie może być puste")
+	@Pattern(regexp = "[A-Za-z]{2,}",message="Podaj poprawne nazwisko")
 	private String lastname;
 	
-	@NotNull(message="Imię nie może być puste")
+	@Pattern(regexp = "\\d{11}",message="Zly pesel")
 	private String pesel;
 	
+    @Valid
 	private Adress homeAdress;
 	
+    @Valid
 	private Division division;
 	
 	public String getVorName() {

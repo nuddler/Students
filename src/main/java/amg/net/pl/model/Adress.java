@@ -1,19 +1,18 @@
 package amg.net.pl.model;
 
-import javax.validation.constraints.NotNull;
-
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Adress {
 	
-	@NotNull(message="Imię nie może być puste")
+	@NotEmpty(message="Imię nie może być puste")
 	private String street;
 	
-	@NotNull(message="Imię nie może być puste")
+	@NotEmpty(message="Imię nie może być puste")
 	private String posesionNumber;
 	
-	@NotNull(message="Imię nie może być puste")
+	@NotEmpty(message="Imię nie może być puste")
 	private String flatNumber;
 	
 	public String getStreet() {

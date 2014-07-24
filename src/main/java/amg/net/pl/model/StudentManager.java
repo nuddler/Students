@@ -20,11 +20,17 @@ public class StudentManager implements IStudentManager {
 	Map<String, Student> students;
 
 	public void deleteStudent(String pesel) {
+		if (logger.isDebugEnabled()) {
+			logger.debug("Starting remove student with PESEL: "+pesel);
+		}
 		if (!students.containsKey(pesel)) {
 			logger.error("Student with PESEL:" + pesel + " doesn't exist");
 			throw new IllegalArgumentException();
 		}
 		students.remove(pesel);
+		if (logger.isDebugEnabled()) {
+			logger.debug("Student with PESEL:"+pesel+" was removed");
+		}
 	}
 
 	public Student getByPesel(String pesel) {
