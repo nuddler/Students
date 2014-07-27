@@ -10,7 +10,18 @@
 	<context:component-scan base-package="amg.net.pl.model" />
 	<context:annotation-config />
 
-	<bean name="studentManager" class="amg.net.pl.model.StudentManager"/>
-	<bean name="divisionManager" class="amg.net.pl.model.DivisionManager"/>
-	
+	<!-- <bean name="studentManager" class="amg.net.pl.model.StudentManager"/> -->
+	<bean name="studentManager" class="amg.net.pl.model.JDBCStudentmanager">
+		<property ref="dataSource" name="dataSource" />
+	</bean>
+	<bean name="divisionManager" class="amg.net.pl.model.DivisionManager" />
+
+	<bean name="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/dupa" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
 </beans>
