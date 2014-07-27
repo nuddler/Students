@@ -8,7 +8,7 @@ Students
 
 TOMCAT
 =====
-<pre><Resource url="jdbc:mysql://localhost:3306/dupa" driverClassName="com.mysql.jdbc.Driver" password="root" username="root" maxWaitMillis="10000" maxIdle="30" maxTotal="100" type="javax.sql.DataSource" auth="Container" name="jdbc/TestDB"/><pre>
+< Resource url="jdbc:mysql://localhost:3306/dupa" driverClassName="com.mysql.jdbc.Driver" password="root" username="root" maxWaitMillis="10000" maxIdle="30" maxTotal="100" type="javax.sql.DataSource" auth="Container" name="jdbc/TestDB"/ >
 
 Przydatne linki
 ==============
