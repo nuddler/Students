@@ -6,6 +6,9 @@ Students
 * http://www.javablog.eu/java/implementacja-uwierzytelniania-w-spring-security/
 * http://docs.spring.io/spring-security/site/docs/3.0.x/reference/ns-config.html
 
+TOMCAT
+=====
+<Resource url="jdbc:mysql://localhost:3306/dupa" driverClassName="com.mysql.jdbc.Driver" password="root" username="root" maxWaitMillis="10000" maxIdle="30" maxTotal="100" type="javax.sql.DataSource" auth="Container" name="jdbc/TestDB"/>
 
 Przydatne linki
 ==============
