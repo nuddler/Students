@@ -2,6 +2,9 @@ Students
 ========
 * https://console.cloudbees.com/
 * http://students.lowca93.eu.cloudbees.net/
+* http://www.mkyong.com/tutorials/spring-security-tutorials/
+* http://www.javablog.eu/java/implementacja-uwierzytelniania-w-spring-security/
+* http://docs.spring.io/spring-security/site/docs/3.0.x/reference/ns-config.html
 
 
 Przydatne linki
