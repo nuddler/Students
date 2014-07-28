@@ -16,12 +16,21 @@
 	</bean>
 	<bean name="divisionManager" class="amg.net.pl.model.DivisionManager" />
 
-	<bean name="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+ 	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/TestDB"></property>
+		<property name="expectedType" value="javax.sql.DataSource"></property>
+		<property name="resourceRef" value="true"></property>
+	</bean> 
+	
+<!--   	<bean name="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/dupa" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
-	</bean>
+		<property name="maxActive" value="100"></property>
+		<property name="maxIdle" value="30"></property>
+	</bean> -->
 
 </beans>
