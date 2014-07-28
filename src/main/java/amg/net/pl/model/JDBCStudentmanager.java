@@ -26,12 +26,16 @@ public class JDBCStudentmanager implements IStudentManager {
 
 	@Override
 	public void deleteStudent(String pesel) {
-
+		if (logger.isDebugEnabled()) {
+			logger.debug("Start deleting - init connection");
+		}
 		try (Connection connection = getDataSource().getConnection()) {
 			PreparedStatement statement = connection
-					.prepareStatement("delete from students2 where PESEL = ?");
+					.prepareStatement("delete from STUDENTS2 where PESEL = ?");
 			statement.setString(1, pesel);
-			statement.executeUpdate();
+			if (logger.isDebugEnabled()) {
+				logger.debug(statement.executeUpdate()+" row affected");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -126,7 +130,7 @@ public class JDBCStudentmanager implements IStudentManager {
 
 		try (Connection connection = getDataSource().getConnection()) {
 			PreparedStatement statement = connection
-					.prepareStatement("UPDATE students2 SET VOR_NAME =?,LAST_NAME = ?,HOME_ADRESS_street = ?,"
+					.prepareStatement("UPDATE STUDENTS2 SET VOR_NAME =?,LAST_NAME = ?,HOME_ADRESS_street = ?,"
 							+ "HOME_ADRESS_FLAT = ?,HOME_ADRESS_HOME = ?,DIVISION = ? WHERE PESEL = ?");
 			statement.setString(1, vorname);
 			statement.setString(2, lastName);
