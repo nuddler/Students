@@ -38,30 +38,31 @@ public class StudentControler {
 	public String editJsp(HttpServletRequest request, Model model) {
 
 		String pesel = request.getParameter("pesel");
-		model.addAttribute("student", studentManager.getByPesel(pesel));
+		model.addAttribute("editStudent", studentManager.getByPesel(pesel));
 		model.addAttribute("pesel", pesel);
 		model.addAttribute("divisions",divisionManager.getAll());
+		
 		return "edit";
 	}
 
 	@RequestMapping(value = "/editStudent", method = RequestMethod.POST)
-	public String editStudent(@ModelAttribute("student") Student student) {
+	public String editStudent(@ModelAttribute("editStudent") Student editStudent) {
 
-		String pesel = student.getPesel();
+		String pesel = editStudent.getPesel();
 		
 		if (logger.isDebugEnabled()) {
 			logger.debug("Edit controller started (PESEL:"+pesel+")");
 		}
 		
-		String divisionName = student.getDivision().getName();
+		String divisionName = editStudent.getDivision().getName();
 		Division division = new Division(divisionName);
 
-		Adress adress = new Adress(student.getHomeAdress().getStreet(), student
-				.getHomeAdress().getPosesionNumber(), student.getHomeAdress()
+		Adress adress = new Adress(editStudent.getHomeAdress().getStreet(), editStudent
+				.getHomeAdress().getPosesionNumber(), editStudent.getHomeAdress()
 				.getFlatNumber());
 
-		String vorname = student.getVorName();
-		String lastName = student.getLastname();
+		String vorname = editStudent.getVorName();
+		String lastName = editStudent.getLastname();
 		
 		studentManager.editStudent(pesel, division, adress, vorname, lastName);
 		return "index";

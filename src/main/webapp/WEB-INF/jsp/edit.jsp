@@ -9,7 +9,7 @@
 <body>
 	<h1>Edit student with PESEL:"${pesel}"</h1>
 	
-	<form:form modelAttribute="student" method="POST"
+	<form:form modelAttribute="editStudent" method="POST"
 		action="editStudent">
 		<div>
 			<h2>Personal Info</h2>

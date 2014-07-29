@@ -1,9 +1,10 @@
 package amg.net.pl.model;
 
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.stereotype.Component;
+import javax.persistence.Embeddable;
 
-@Component
+import org.hibernate.validator.constraints.NotEmpty;
+
+@Embeddable
 public class Adress {
 	
 	@NotEmpty(message="Imię nie może być puste")
@@ -46,6 +47,5 @@ public class Adress {
 		this.flatNumber = flatNumber;
 	}
 	public Adress() {
-		// TODO Auto-generated constructor stub
 	}
 }

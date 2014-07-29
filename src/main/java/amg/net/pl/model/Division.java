@@ -1,12 +1,13 @@
 package amg.net.pl.model;
 
+import javax.persistence.Embeddable;
+
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.stereotype.Component;
 
-@Component
+@Embeddable
 public class Division {
 	
 	@NotEmpty(message="Imię nie może być puste")
