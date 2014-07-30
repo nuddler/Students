@@ -63,7 +63,10 @@ public class StudentManagerJPAImpl implements IStudentManager {
 		if (logger.isDebugEnabled()) {
 			logger.debug("Start creating student -pesel:"+pesel);
 		}
-		
+		em.merge(division);
+		if (logger.isDebugEnabled()) {
+			logger.debug("Creating - division(after merge)"+division);
+		}
 		Student newStudent = new Student(vorname, lastName, pesel, adress,
 				division);
 		
@@ -91,10 +94,18 @@ public class StudentManagerJPAImpl implements IStudentManager {
 	public void editStudent(String pesel, Division division, Adress adress,
 			String vorname, String lastName) {
 		
+		if (logger.isDebugEnabled()) {
+			logger.debug("Start editing student with PESEL: "+pesel);
+		}
 		Student student=getByPesel(pesel);
 		student.setDivision(division);
 		student.setHomeAdress(adress);
 		student.setVorName(vorname);
 		student.setLastname(lastName);
+		em.persist(student);
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug("Student was edited succesfully");
+		}
 	}
 }

@@ -1,12 +1,12 @@
 package amg.net.pl.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Version;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -37,11 +37,13 @@ public class Student {
 	private Adress homeAdress;
 	
     @Valid
+    @ManyToOne
 	private Division division;
     
-    @ElementCollection
-    private List<String> lista;
-	
+    @Version
+    @NotNull
+    private Long version=1L;
+    
 	public String getVorName() {
 		return vorName;
 	}

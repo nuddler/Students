@@ -1,17 +1,31 @@
 package amg.net.pl.model;
 
-import javax.persistence.Embeddable;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
-@Embeddable
+@Entity
 public class Division {
 	
+	@Id
+	@GeneratedValue
+	private Long id;
+	
 	@NotEmpty(message="Imię nie może być puste")
+	@Column(unique=true)
 	private String name;
+	
+	@OneToMany(mappedBy="division")
+	private List<Student> studentList;
 
 	public String getName() {
 		return name;
@@ -39,8 +53,24 @@ public class Division {
 		super();
 		this.name = name;
 	}
+	
 	public Division() {
-		// TODO Auto-generated constructor stub
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Student> getStudentList() {
+		return studentList;
+	}
+
+	public void setStudentList(List<Student> studentList) {
+		this.studentList = studentList;
 	}
 
 }

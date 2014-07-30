@@ -55,7 +55,7 @@ public class StudentControler {
 		}
 		
 		String divisionName = editStudent.getDivision().getName();
-		Division division = new Division(divisionName);
+		Division division = divisionManager.getById(divisionName);
 
 		Adress adress = new Adress(editStudent.getHomeAdress().getStreet(), editStudent
 				.getHomeAdress().getPosesionNumber(), editStudent.getHomeAdress()
@@ -85,8 +85,18 @@ public class StudentControler {
 			model.addAttribute("divisions", divisionManager.getAll().values());
 			return "add";
 		}
+		
 		String divisionName = newstudent.getDivision().getName();
-		Division division = new Division(divisionName);
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug("create - before getting division");
+		}
+		
+		Division division = divisionManager.getById(divisionName);
+		
+		if (logger.isDebugEnabled()) {
+			logger.debug("create - "+division);
+		}
 		
 		Adress adress = new Adress(newstudent.getHomeAdress().getStreet(),
 				newstudent.getHomeAdress().getPosesionNumber(),
@@ -114,5 +124,12 @@ public class StudentControler {
 
 		model.addAttribute("map", studentManager.getAll());
 		return "studentlist";
+	}
+
+
+	@RequestMapping("/error")
+	public String error(Model model) {
+		model.addAttribute("error",true);
+		return "redirect:/addStudent";
 	}
 }

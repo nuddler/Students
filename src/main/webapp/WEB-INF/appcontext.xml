@@ -10,7 +10,9 @@
 	<context:annotation-config />
 	<tx:annotation-driven />
 
-	<bean name="divisionManager" class="amg.net.pl.model.DivisionManager" />
+	<!-- <bean name="divisionManager" class="amg.net.pl.model.DivisionManager" /> -->
+	
+	<bean name="divisionManager" class="amg.net.pl.model.DivisionManagerJPAImpl" />
 
 	<bean name="studentManager" class="amg.net.pl.model.StudentManagerJPAImpl" />
 
@@ -27,6 +29,5 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="persistenceUnitName" value="manager1"></property>
 	</bean>
-
 
 </beans>

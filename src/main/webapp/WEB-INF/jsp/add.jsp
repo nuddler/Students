@@ -22,6 +22,9 @@
 			<p>PESEL</p>
 			<form:input path="pesel" value="12345678910" />
 			<form:errors path="pesel"/>
+			<c:if test="${param.error}">
+				<c:out value="Student exist!"/>
+			</c:if>
 		</div>
 		<div>
 			<h2>Adress</h2>
