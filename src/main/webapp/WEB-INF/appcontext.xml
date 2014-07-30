@@ -10,8 +10,9 @@
 	<context:annotation-config />
 	<tx:annotation-driven />
 
-	<!-- <bean name="divisionManager" class="amg.net.pl.model.DivisionManager" /> -->
-	
+	<!-- <bean name="divisionManager" class="amg.net.pl.model.DivisionManager" 
+		/> -->
+
 	<bean name="divisionManager" class="amg.net.pl.model.DivisionManagerJPAImpl" />
 
 	<bean name="studentManager" class="amg.net.pl.model.StudentManagerJPAImpl" />
@@ -28,6 +29,14 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="persistenceUnitName" value="manager1"></property>
+		
+		<!-- <property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="showSql" value="false" />
+				<property name="generateDdl" value="true" />
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
+			</bean>
+		</property> -->
 	</bean>
 
 </beans>

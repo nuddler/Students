@@ -8,10 +8,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Student manager</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<h1>Home page</h1>
-	<form action="listStudents">
+	<form action="listStudents" >
 		<input type="submit" value="Go to student list" />
 	</form>
 

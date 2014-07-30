@@ -3,22 +3,22 @@
 	xmlns:web="http://java.sun.com/xml/ns/javaee" xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
-	
+
 	<display-name>Archetype Created Web Application</display-name>
-	
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/appcontext.xml </param-value>
 	</context-param>
-	
+
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
 	<listener>
 		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
 	</listener>
-	
+
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -28,26 +28,29 @@
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
 	<welcome-file-list>
 		<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
 	</welcome-file-list>
-	
+
 	<resource-ref>
 		<description>DB Connection</description>
 		<res-ref-name>jdbc/TestDB</res-ref-name>
 		<res-type>javax.sql.DataSource</res-type>
 		<res-auth>Container</res-auth>
 	</resource-ref>
-	
+
 	<error-page>
 		<exception-type>javax.persistence.EntityExistsException</exception-type>
 		<location>/error</location>
 	</error-page>
-
+	<error-page>
+		<exception-type>com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException</exception-type>
+		<location>/error</location>
+	</error-page>
 </web-app>

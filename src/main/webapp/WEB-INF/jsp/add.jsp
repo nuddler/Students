@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add new student</title>
+<link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 	<form:form modelAttribute="newStudent" method="POST"
