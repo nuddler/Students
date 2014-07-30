@@ -6,6 +6,9 @@ Students
 * http://www.javablog.eu/java/implementacja-uwierzytelniania-w-spring-security/
 * http://docs.spring.io/spring-security/site/docs/3.0.x/reference/ns-config.html
 
+http://www.shortcutworld.com/en/win/Eclipse.html
+
+
 TOMCAT
 =====
 conf contex.xml
