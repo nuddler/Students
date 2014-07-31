@@ -11,13 +11,19 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<h1>Home page</h1>
-	<form action="listStudents" >
-		<input type="submit" value="Go to student list" />
-	</form>
+	<center>
+		<h1>Home page</h1>
 
-	<form action="addStudent">
-		<input type="submit" value="Go to student adding" />
-	</form>
+		<div style="margin-top: 10%; width: 70%;">
+				<form action="listStudents">
+					<input type="submit" value="Go to student list"
+						class="btn btn-primary" />
+				</form>
+				<form action="addStudent">
+					<input type="submit" value="Go to student adding"
+						class="btn btn-primary" />
+				</form>
+		</div>
+	</center>
 </body>
 </html>

@@ -7,10 +7,10 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import amg.net.pl.model.Adress;
-import amg.net.pl.model.Division;
 import amg.net.pl.model.IStudentManager;
 import amg.net.pl.model.JDBCStudentmanager;
+import amg.net.pl.pojo.Adress;
+import amg.net.pl.pojo.Division;
 
 public class MysqlTest {
 

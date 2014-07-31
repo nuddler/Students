@@ -9,6 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import amg.net.pl.pojo.Division;
+
 @Component
 public final class DivisionManager implements IDivisionManager {
 

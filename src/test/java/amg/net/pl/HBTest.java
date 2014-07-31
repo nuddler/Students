@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 
 import org.junit.Test;
 
-import amg.net.pl.model.Student;
+import amg.net.pl.pojo.Student;
 
 public class HBTest {
 

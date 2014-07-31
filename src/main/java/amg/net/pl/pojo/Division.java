@@ -1,4 +1,4 @@
-package amg.net.pl.model;
+package amg.net.pl.pojo;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class Division {
 	@GeneratedValue
 	private Long id;
 	
-	@NotEmpty(message="Imię nie może być puste")
+	@NotEmpty(message="Musisz podac nazwe wydzialu")
 	@Column(unique=true)
 	private String name;
 	

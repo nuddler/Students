@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import amg.net.pl.model.Adress;
-import amg.net.pl.model.Division;
 import amg.net.pl.model.IDivisionManager;
 import amg.net.pl.model.IStudentManager;
-import amg.net.pl.model.Student;
+import amg.net.pl.pojo.Adress;
+import amg.net.pl.pojo.Division;
+import amg.net.pl.pojo.Student;
 
 @Controller
 public class StudentControler {
@@ -79,6 +79,7 @@ public class StudentControler {
 	public String createStudent(@ModelAttribute("newStudent") @Valid Student newstudent, BindingResult result,Model model) {
 		
 		if(result.hasErrors()){
+			
 			if (logger.isDebugEnabled()) {
 				logger.debug("ERORR");
 			}

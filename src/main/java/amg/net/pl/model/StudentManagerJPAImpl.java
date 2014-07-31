@@ -12,6 +12,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 
+import amg.net.pl.pojo.Adress;
+import amg.net.pl.pojo.Division;
+import amg.net.pl.pojo.Student;
+
 @Component
 @Transactional
 public class StudentManagerJPAImpl implements IStudentManager {

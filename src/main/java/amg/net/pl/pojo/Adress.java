@@ -1,19 +1,23 @@
-package amg.net.pl.model;
+package amg.net.pl.pojo;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Embeddable
 public class Adress {
 	
-	@NotEmpty(message="Imię nie może być puste")
+	@NotEmpty(message="Musisz podac nazwe ulice")
+	@Pattern(regexp = "[A-Za-z]{2,}",message="Podaj poprawna nazwe ulicy")
 	private String street;
 	
-	@NotEmpty(message="Imię nie może być puste")
+	@NotEmpty(message="Musiz podac numer posesji")
+	@Pattern(regexp = "[0-9]{1,}[a-z]{0,1}",message="Podaj poprawny numer posesji")
 	private String posesionNumber;
 	
-	@NotEmpty(message="Imię nie może być puste")
+	@NotEmpty(message="Musisz podac numer mieszkania")
+	@Pattern(regexp = "[0-9]{1,}",message="Podaj poprawny numer mieszkania")
 	private String flatNumber;
 	
 	public String getStreet() {

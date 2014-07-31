@@ -11,28 +11,32 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-	<table border="1" style="width: 300px">
+<div style="margin-top:10%;width:70%;margin-left:auto;margin-right:auto;">
+	<table class="table">
+	<thead>
 		<tr>
 			<amg:studentheader />
 		</tr>
+	</thead>
 		<c:forEach items="${map}" var="elem">
 			<tr>
 				<amg:student student="${elem.value}" />
 				<td>
 					<form action="editjsp" method="POST">
-						<input type="submit" value="Edit" /> <input type="hidden"
-							name="pesel" value="${elem.value.pesel}" />
+						<input type="submit" value="Edit" class="btn btn-default"/> 
+						<input type="hidden" name="pesel" value="${elem.value.pesel}" />
 					</form>
 					<form action="deleteStudent">
-						<input type="submit" value="Delete" /> <input type="hidden"
-							name="pesel" value="${elem.value.pesel}" />
+						<input type="submit" value="Delete" class="btn btn-default" /> 
+						<input type="hidden" name="pesel" value="${elem.value.pesel}" />
 					</form>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
 	<form action="homePage">
-		<input type="submit" value="Back to home" />
+		<input type="submit" value="Back to home" class="btn btn-primary"/>
 	</form>
+</div>
 </body>
 </html>

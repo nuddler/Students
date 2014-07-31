@@ -9,46 +9,47 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+<div style="margin-top:10%;width:50%;margin-left:25%;margin-right:auto%;">
 	<form:form modelAttribute="newStudent" method="POST"
-		action="addStudent">
-		<form:errors path="*" element="div" />
+		action="addStudent" >
+		<form:errors path="*" element="div" cssClass="alert alert-danger"/>
+		<c:if test="${param.error}">
+				<div class="alert alert-danger">
+				<c:out value="Student exist!"/>
+				</div>
+		</c:if>
 		<div>
 			<h2>Personal Info</h2>
 			<p>First Name</p>
-			<form:input path="vorName" value="Imie" />
-			<form:errors path="vorName"></form:errors>
+			<form:input path="vorName" value="Imie" class="form-control"/>
 			<p>Last Name</p>
-			<form:input path="lastname" value="Nazwisko" />
-			<form:errors path="lastname" />
+			<form:input path="lastname" value="Nazwisko" class="form-control"/>
 			<p>PESEL</p>
-			<form:input path="pesel" value="12345678910" />
-			<form:errors path="pesel"/>
-			<c:if test="${param.error}">
-				<c:out value="Student exist!"/>
-			</c:if>
+			<form:input path="pesel" value="12345678910" class="form-control"/>
 		</div>
 		<div>
 			<h2>Adress</h2>
 			<p>Street</p>
-			<form:input path="homeAdress.street" value="ulica" />
-			<form:errors path="homeAdress.street"/>
+			<form:input path="homeAdress.street" value="ulica" class="form-control"/>
 			<p>Possesion number</p>
-			<form:input path="homeAdress.posesionNumber" value="Nr domu" />
-			<form:errors path="homeAdress.posesionNumber"/>
+			<form:input path="homeAdress.posesionNumber" value="Nr domu" class="form-control"/>
 			<p>Flat number</p>
-			<form:input path="homeAdress.flatNumber" value="Nr miszkania" />
-			<form:errors path="homeAdress.flatNumber"/>
+			<form:input path="homeAdress.flatNumber" value="Nr miszkania" class="form-control"/>
 		</div>
 		<div>
 			<h2>Divisions</h2>
-			<form:select path="division.name">
+			<form:select path="division.name" class="form-control">
 				<c:forEach items="${divisions}" var="division">
 					<form:option value="${division.name}" />
 				</c:forEach>
 			</form:select>
 		</div>
-		<form:button type="submit">Add</form:button>
+		<form:button type="submit" class="btn btn-primary">Add</form:button>
 	</form:form>
+	<form action="homePage">
+		<input type="submit" value="Back to home" class="btn btn-primary"/>
+	</form>
+</div>
 </body>
 </html>
 

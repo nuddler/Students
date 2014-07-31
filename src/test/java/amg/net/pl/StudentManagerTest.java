@@ -12,11 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import amg.net.pl.model.Adress;
-import amg.net.pl.model.Division;
 import amg.net.pl.model.IDivisionManager;
 import amg.net.pl.model.IStudentManager;
-import amg.net.pl.model.Student;
+import amg.net.pl.pojo.Adress;
+import amg.net.pl.pojo.Division;
+import amg.net.pl.pojo.Student;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "/META-INF/test-context.xml" })

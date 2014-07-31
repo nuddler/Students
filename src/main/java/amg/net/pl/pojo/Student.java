@@ -1,4 +1,4 @@
-package amg.net.pl.model;
+package amg.net.pl.pojo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,15 +22,15 @@ public class Student {
 	@Column(unique = true, nullable = false) 
 	private Long id;
 	
-	@NotEmpty
-	@Pattern(regexp = "[A-Za-z]{2,}",message="Bad pesel")
+	@NotEmpty(message="Musisz podac imie")
+	@Pattern(regexp = "[A-Za-z]{2,}",message="Podaj poprawne imie")
 	private String vorName;
 	
-	@NotEmpty(message="Imię nie może być puste")
+	@NotEmpty(message="Musisz podac nazwisko")
 	@Pattern(regexp = "[A-Za-z]{2,}",message="Podaj poprawne nazwisko")
 	private String lastname;
 	
-	@Pattern(regexp = "\\d{11}",message="Zly pesel")
+	@Pattern(regexp = "\\d{11}" ,message="Niepoprawny format PESEL-u")
 	private String pesel;
 	
     @Valid

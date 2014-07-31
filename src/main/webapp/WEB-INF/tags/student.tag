@@ -1,5 +1,5 @@
 <%@ tag isELIgnored="false"%>
-<%@ attribute name="student" required="true" type="amg.net.pl.model.Student"%>
+<%@ attribute name="student" required="true" type="amg.net.pl.pojo.Student"%>
 
 	 <td><jsp:text>${student.pesel}</jsp:text></td> 
      <td><jsp:text>${student.vorName}</jsp:text></td>
