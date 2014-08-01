@@ -46,7 +46,7 @@
 		</div>
 		<form:button type="submit" class="btn btn-primary">Add</form:button>
 	</form:form>
-	<form action="homePage">
+	<form action="/Students">
 		<input type="submit" value="Back to home" class="btn btn-primary"/>
 	</form>
 </div>

@@ -20,6 +20,7 @@ public class DivisionManagerJPAImpl implements IDivisionManager {
 
 	private static final Logger logger = LogManager
 			.getLogger(DivisionManagerJPAImpl.class);
+	
 	@PersistenceContext
 	private EntityManager em;
 

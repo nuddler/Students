@@ -24,9 +24,6 @@ public class Division {
 	@Column(unique=true)
 	private String name;
 	
-	@OneToMany(mappedBy="division")
-	private List<Student> studentList;
-
 	public String getName() {
 		return name;
 	}
@@ -64,13 +61,4 @@ public class Division {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-	public List<Student> getStudentList() {
-		return studentList;
-	}
-
-	public void setStudentList(List<Student> studentList) {
-		this.studentList = studentList;
-	}
-
 }

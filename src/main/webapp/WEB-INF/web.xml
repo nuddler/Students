@@ -32,7 +32,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
-	</servlet-mapping>
+	</servlet-mapping>	
 
 	<welcome-file-list>
 		<welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
@@ -51,6 +51,6 @@
 	</error-page>
 	<error-page>
 		<exception-type>com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException</exception-type>
-		<location>/error</location>
+		<location>/controller/error</location>
 	</error-page>
 </web-app>

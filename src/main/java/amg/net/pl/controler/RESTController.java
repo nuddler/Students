@@ -3,8 +3,10 @@ package amg.net.pl.controler;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,8 +32,8 @@ public class RESTController {
 		return studentManager.getAll();
 	}
 
-	@RequestMapping(value = "/students", method = RequestMethod.POST)
-	public String createStudent(@ModelAttribute("newStudent") Student newStudent) {
+	@RequestMapping(value = "/students", method = RequestMethod.POST, consumes=MediaType.APPLICATION_JSON_VALUE)
+	public String createStudent(@RequestBody Student newStudent) {
 
 		String divisionName = newStudent.getDivision().getName();
 

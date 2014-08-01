@@ -34,7 +34,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<form action="homePage">
+	<form action="/Students">
 		<input type="submit" value="Back to home" class="btn btn-primary"/>
 	</form>
 </div>

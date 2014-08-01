@@ -19,7 +19,7 @@ import amg.net.pl.pojo.Adress;
 import amg.net.pl.pojo.Division;
 import amg.net.pl.pojo.Student;
 
-@Controller
+@Controller	
 public class StudentControler {
 
 	private static final Logger logger = LogManager.getLogger(StudentControler.class);
@@ -29,7 +29,7 @@ public class StudentControler {
 	@Autowired
 	private IStudentManager studentManager;
 
-	@RequestMapping(value = "/homePage", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String homePage(Model model) {
 		return "index";
 	}

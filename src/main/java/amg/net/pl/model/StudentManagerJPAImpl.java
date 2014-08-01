@@ -40,7 +40,7 @@ public class StudentManagerJPAImpl implements IStudentManager {
 			logger.debug("Student was removed (PESEL: " + pesel + ")");
 		}
 	}
-
+	
 	@Override
 	public Student getByPesel(String pesel) {
 
