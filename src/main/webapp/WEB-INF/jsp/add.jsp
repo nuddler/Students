@@ -7,10 +7,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add new student</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
+
+<script type="text/javascript"
+src="<c:url value="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"/>"></script>
+<script type="text/javascript"
+src="<c:url value="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"/>"></script>
+<script src="<c:url value="resource1/file.js"/>"></script>
+
 </head>
 <body>
 <div style="margin-top:10%;width:50%;margin-left:25%;margin-right:auto%;">
-	<form:form modelAttribute="newStudent" method="POST"
+	<form:form id="formularz" modelAttribute="newStudent" method="POST"
 		action="addStudent" >
 		<form:errors path="*" element="div" cssClass="alert alert-danger"/>
 		<c:if test="${param.error}">
